@@ -1,1337 +1,251 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Farhan Farooqui — Portfolio</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap"
-    rel="stylesheet" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --black: #080808;
-      --black2: #111111;
-      --black3: #1a1a1a;
-      --gold: #C9A84C;
-      --gold: #C9A84C;
-      --gold-soft: rgba(201, 168, 76, 0.15);
-      --gold-glow: rgba(201, 168, 76, 0.4);
-      --gold-lt: #E2C06A;
-      --gold-dk: #9A7A2E;
-      --gold-line: rgba(201, 168, 76, 0.3);
-      --gold-dim: rgba(201, 168, 76, 0.08);
-      --white: #111111;
-      --white-dim: rgba(17, 17, 17, 0.55);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: linear-gradient(180deg,
-          #FAF8F3 0%,
-          #F5F2EA 40%,
-          #FAF8F3 100%);
-      color: var(--white);
-      font-family: 'Manrope', sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .portfolio {
-      max-width: 100%;
-      margin: 0;
-      padding: 2.5rem 5rem 5rem 4rem;
-    }
-
-   
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 4rem;
-      padding-bottom: 1rem;
-      border-bottom: 0.5px solid var(--gold-line);
-    }
-
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      color: var(--white-dim);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold-lt);
-    }
-
-    /* ── HERO ── */
-    .hero {
-      margin-bottom: 5rem;
-      display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero-image {
-      width: 280px;
-      height: 320px;
-      object-fit: cover;
-      border: 0.5px solid var(--gold-line);
-      border-radius: 4px;
-    }
-
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--gold-dk);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 600;
-      line-height: 1.12;
-      margin-bottom: 1.25rem;
-      color: var(--white);
-      letter-spacing: 0.01em;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      font-weight: 400;
-      color: var(--gold-lt);
-    }
-
-    .hero-bio {
-      font-size: 15px;
-      color: var(--white-dim);
-      max-width: 620px;
-      line-height: 1.85;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--gold-line);
-      padding-bottom: 2px;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-
-    .hero-cta:hover {
-      opacity: 0.6;
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      margin-bottom: 4rem;
-    }
-
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-dk);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 0.5px;
-      background: var(--gold-line);
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      padding: 5px 13px;
-      border: 0.5px solid rgba(201, 168, 76, 0.2);
-      color: var(--white-dim);
-      background: transparent;
-      letter-spacing: 0.04em;
-      transition: transform 0.25s ease, border-color 0.15s, color 0.15s, background 0.15s;
-      cursor: default;
-    }
-
-    .skill-tag:hover {
-      border-color: var(--gold-line);
-      color: var(--gold);
-      background: var(--gold-dim);
-      transform: scale(1.09);
-    }
-
-    .skill-tag.highlight {
-      border-color: var(--gold-dk);
-      color: var(--gold);
-      background: var(--gold-dim);
-    }
-
-    /* ── PROJECTS ── */
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      gap: 1rem;
-      padding: 1.3rem 0;
-      border-bottom: 0.5px solid rgba(201, 168, 76, 0.15);
-      cursor: pointer;
-      transition: transform 0.3s ease, padding-left 0.2s;
-    }
-
-    .project-item:first-child {
-      border-top: 0.5px solid rgba(201, 168, 76, 0.15);
-    }
-
-    .project-item:hover {
-      padding-left: 6px;
-      transform: scale(1.06);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .project-title {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 4px;
-      color: var(--white);
-    }
-
-    .project-desc {
-      font-size: 13px;
-      color: var(--white-dim);
-      line-height: 1.6;
-      max-width: 700px;
-    }
-
-    .project-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 8px;
-    }
-
-    .stack-badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      padding: 2px 9px;
-      border: 0.5px solid var(--gold-line);
-      color: var(--gold-dk);
-      background: var(--gold-dim);
-      letter-spacing: 0.04em;
-    }
-
-    .project-arrow {
-      font-size: 16px;
-      color: var(--gold-dk);
-      margin-top: 2px;
-      transition: color 0.15s, transform 0.15s;
-      text-decoration: none;
-    }
-
-    .project-item:hover .project-arrow {
-      color: var(--gold);
-      transform: translate(2px, -2px);
-    }
-
-    .project-item {
-      transition: transform 0.3s ease, padding-left 0.2s;
-    }
-
-    .project-item:hover {
-      transform: scale(1.06);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    /* ── CERTIFICATIONS ── */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--gold-line);
-      border: 0.5px solid var(--gold-line);
-    }
-
-    .cert-card {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 1.4rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: transform 0.3s ease, background 0.2s ease;
-    }
-
-    .cert-card:hover {
-      background: rgba(201, 168, 76, 0.06);
-      transform: scale(1.02);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .cert-issuer {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-dk);
-    }
-
-    .cert-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.4;
-    }
-
-    .cert-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--white-dim);
-      letter-spacing: 0.06em;
-    }
-
-    .cert-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .cert-btn {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border: 0.5px solid var(--gold-line);
-      background: transparent;
-      color: var(--gold);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .cert-btn:hover {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-      color: var(--gold-lt);
-    }
-
-    .cert-btn.primary {
-      background: var(--gold-dim);
-      border-color: var(--gold-dk);
-    }
-
-    /* ── MODAL ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.88);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal-box {
-      background: #FAF8F3;
-      border: 0.5px solid var(--gold-line);
-      max-width: 700px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 1.25rem 1.5rem;
-      border-bottom: 0.5px solid var(--gold-line);
-    }
-
-    .modal-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .modal-issuer {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--gold-dk);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--white-dim);
-      font-size: 1.3rem;
-      cursor: pointer;
-      line-height: 1;
-      padding: 2px 6px;
-      transition: color 0.15s;
-    }
-
-    .modal-close:hover {
-      color: var(--gold);
-    }
-
-    .modal-body {
-      padding: 1.5rem;
-    }
-
-    .modal-img-wrap {
-      background: #F0EDE4;
-      border: 0.5px solid rgba(201, 168, 76, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 200px;
-      margin-bottom: 1.25rem;
-      overflow: hidden;
-    }
-
-    .modal-img-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .modal-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 3rem;
-      color: var(--white-dim);
-      text-align: center;
-    }
-
-    .modal-placeholder-icon {
-      font-size: 2.5rem;
-      opacity: 0.3;
-    }
-
-    .modal-placeholder p {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--gold-dk);
-    }
-
-    .modal-footer {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 0.5px solid var(--gold-line);
-    }
-
-    .contact-card {
-      padding: 1rem 1.1rem;
-      background: #FAF8F3;
-      border-right: 0.5px solid var(--gold-line);
-      transition: transform 0.25s ease, background 0.15s ease;
-    }
-
-    .contact-card:last-child {
-      border-right: none;
-    }
-
-    .contact-card:hover {
-      background: rgba(201, 168, 76, 0.06);
-      transform: scale(1.03);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .contact-card-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--gold-dk);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .contact-card-value {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white);
-    }
-
-    .contact-link {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .contact-link:hover {
-      color: var(--gold);
-    }
-
-    /* ── FEEDBACK FORM ── */
-    .feedback-form {
-      max-width: 720px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .feedback-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    .feedback-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .feedback-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-dk);
-    }
-
-    .feedback-input {
-      background: transparent;
-      border: 0.5px solid var(--gold-line);
-      padding: 9px 13px;
-      font-family: 'Manrope', sans-serif;
-      font-size: 13px;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.15s;
-      width: 100%;
-    }
-
-    .feedback-input::placeholder {
-      color: var(--white-dim);
-    }
-
-    .feedback-input:focus {
-      border-color: var(--gold);
-    }
-
-    .feedback-textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .feedback-btn {
-      align-self: flex-start;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: var(--gold-dim);
-      border: 0.5px solid var(--gold-dk);
-      padding: 9px 20px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .feedback-btn:hover {
-      background: var(--gold-soft);
-      color: var(--gold-lt);
-    }
-
-    .feedback-thanks {
-      display: none;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--gold-dk);
-    }
-
-    @media (max-width: 768px) {
-      .feedback-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-top: 5rem;
-      padding-top: 1.5rem;
-      border-top: 0.5px solid var(--gold-line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--gold-dk);
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.08em;
-    }
-
-    @media (max-width: 768px) {
-      .portfolio {
-        padding: 2rem 1.5rem 4rem;
-      }
-
-      .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .cert-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero h1 {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1.2s ease forwards;
-    }
-
-    .hero h1 span {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: letterReveal 0.6s ease forwards;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes letterReveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: scale(0.92) translateY(50px);
-      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-
-    .cursor-glow {
-      position: fixed;
-      width: 170px;
-      height: 170px;
-      background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-    }
-
-    .hero {
-      transform: translateY(0);
-      transition: transform 0.2s ease-out;
-    }
-
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      width: 0%;
-      background: var(--gold);
-      z-index: 9999;
-      column-rule-color: #9A7A2E;
-    }
-
-    a:hover,
-    .project-title:hover {
-
-      color: var(--gold);
-      text-shadow: 0 0 6px rgba(201, 168, 76, 0.3);
-    }
-
-
-    body {
-      opacity: 0;
-      transition: opacity 2s ease;
-      overflow-x: hidden;
-    }
-
-    body.loaded {
-      opacity: 1;
-    }
-
-    nav.scrolled {
-      backdrop-filter: blur(20px);
-      background: rgba(7, 6, 0, 0.734);
-      border-bottom: 0.5px solid rgba(201, 168, 76, 0.2);
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(201, 168, 76, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 60%, rgba(201, 168, 76, 0.05), transparent 40%);
-      z-index: -1;
-      animation: moveBg 12s ease-in-out infinite alternate;
-    }
-
-    @keyframes moveBg {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      100% {
-        transform: translate(-40px, -40px);
-      }
-    }
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-      transition: opacity 0.8s ease, visibility 0.8s;
-    }
-
-    .loader-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 18px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      animation: pulse 1.9s infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.3;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    #loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease;
-    }
-
-    body.light {
-      --black: #f5f5f5;
-      --white: #111;
-      --white-dim: rgba(0, 0, 0, 0.6);
-      background: var(--black);
-      color: var(--white);
-    }
-
-    section {
-      transition: filter 0.4s ease, opacity 0.4s ease;
-    }
-
-    section.blur {
-      filter: blur(2.3px);
-      opacity: 0.3;
-    }
-
-    * {
-      -webkit-font-smoothing: antialiased;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    ::selection {
-      background: var(--gold);
-      color: black;
-    }
-  </style>
-</head>
-
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Farhan Farooqui — Developer & Learner</title>
+<meta name="description" content="Portfolio of Farhan Farooqui, first-year B.Tech CSE (AIML) student at MITAOE, Pune.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ── */
+:root{--paper:#EEEBFF;--paper2:#F8F7FF;--card:#FFFFFF;--input:#FFFFFF;--ink:#14120D;--on:#14120D;--blue:#FF8FC7;--red:#A78BFA;--yellow:#FFD84D;--green:#6EE7B7;--coral:#FFD84D;--focus:#6D28D9;--err:#B33414;
+--display:"Archivo Black","Arial Black",sans-serif;--serif:"Instrument Serif",Georgia,serif;--sans:"Space Grotesk","Segoe UI",system-ui,sans-serif;--b:2px solid var(--ink);--ease:cubic-bezier(.2,.8,.2,1)}
+body.dark{--focus:#C4B5FD;--paper:#14120D;--paper2:#1C1912;--card:#221E15;--input:#2A251A;--ink:#EEEBFF;--err:#FF8A6B}
+/* ── Base ── */
+*{box-sizing:border-box}html,body{overflow-x:clip}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;font:400 17px/1.6 var(--sans);color:var(--ink);background:var(--paper);transition:background-color .3s}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.dark::after{mix-blend-mode:screen;opacity:.03}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}a{color:inherit}h1,h2,h3,p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.kicker{font:700 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+/* ── Loader ── */
+#loader{position:fixed;inset:0;z-index:100;background:var(--ink);color:#A78BFA;display:grid;place-items:center;font:clamp(28px,8vw,72px) var(--display);transition:transform .7s var(--ease) .1s}
+#loader.hide{transform:translateY(-100%)}
+/* ── Nav ── */
+.nav{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--ink)}
+.nav-in{max-width:1180px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:padding .3s}
+.nav.stuck{box-shadow:0 2px 0 var(--ink)}.nav.stuck .nav-in{padding-block:6px}
+.logo{font:20px var(--display);text-decoration:none;display:flex;align-items:center;gap:10px}.logo i{width:36px;height:36px;border-radius:50%;background:var(--ink);box-shadow:3px 3px 0 var(--red);display:grid;place-items:center;font:700 13px var(--sans);font-style:normal;color:var(--red)}
+.links{display:flex;gap:4px;align-self:stretch;align-items:flex-end}
+.links a{--tc:var(--red);padding:10px 16px 8px;font-weight:600;font-size:14px;text-decoration:none;border:2px solid transparent;border-bottom:0;border-radius:10px 10px 0 0}
+
+.links a:hover,.links a.on{background:var(--paper2);border-color:var(--ink);box-shadow:inset 0 5px 0 var(--tc)}
+.nav-r{display:flex;gap:10px;align-items:center}
+.progress{height:4px;display:flex;position:relative}.progress i{flex:1}.progress i:nth-child(1){background:var(--red)}.progress i:nth-child(2){background:var(--blue)}.progress i:nth-child(3){background:var(--yellow)}.progress i:nth-child(4){background:var(--green)}.progress b{position:absolute;inset:0;background:var(--paper);transform-origin:right;transform:scaleX(1)}
+.btn{font:700 14px/1 var(--sans);color:var(--on);display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:12px 20px;border:var(--b);border-radius:999px;background:var(--red);box-shadow:4px 4px 0 var(--ink);text-decoration:none;cursor:pointer;transition:transform .15s var(--ease),box-shadow .15s var(--ease)}
+.btn:hover,.btn:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.blue{background:var(--yellow)}.btn.ghost{background:transparent;box-shadow:none}.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--card);box-shadow:4px 4px 0 var(--ink)}.btn.paper{background:var(--card);color:var(--ink)}.btn.sm{min-height:44px;padding:10px 16px;font-size:13px;border-radius:10px}
+.menu{display:none;width:44px;height:44px;border:var(--b);border-radius:10px;background:var(--paper2);box-shadow:3px 3px 0 var(--ink);flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0;cursor:pointer}.menu span{width:20px;height:3px;background:var(--ink)}
+/* ── Hero ── */
+.hero{padding:56px 0 72px}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}.hero-grid>*{min-width:0}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--on);border:var(--b);border-radius:6px;padding:7px 12px;font:700 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;transform:rotate(-2deg);margin-bottom:22px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--ink)}@keyframes pulse{50%{transform:scale(1.5);opacity:.5}}
+.mask{display:block;overflow:hidden}.mask>span{display:block;transform:translateY(105%);transition:transform .9s var(--ease) calc(var(--l,0)*90ms)}.in .mask>span,.mask.in>span{transform:none}
+h1 .cv{font:clamp(48px,8.6vw,124px)/.94 var(--display);letter-spacing:-.04em;overflow-wrap:anywhere}
+h1 .out{-webkit-text-stroke:2px var(--ink);color:transparent}
+h1 .ser{font:italic clamp(30px,4.8vw,70px)/1.2 var(--serif);letter-spacing:-.03em;margin-top:6px;white-space:nowrap;padding-bottom:6px}
+.hlk{background:var(--coral);color:var(--on);padding:0 .14em;display:inline-block;clip-path:polygon(1% 12%,95% 0,100% 84%,6% 100%);transform:rotate(-1.5deg);transition:clip-path .4s var(--ease)}.hlk:hover{clip-path:polygon(0 4%,98% 8%,99% 96%,3% 90%)}
+.hlk.y{display:inline;clip-path:none;transform:none;font-style:normal;padding:0 .1em;background:linear-gradient(transparent 18%,var(--yellow) 18%,var(--yellow) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.bio{max-width:52ch;font-size:18px;margin:24px 0}.row{display:flex;flex-wrap:wrap;gap:12px}
+.hero-r{position:relative;padding:28px;justify-self:center;width:100%;max-width:420px}
+.arch{position:absolute;inset:0 -8px 22% 12%;background:var(--ink);border:var(--b);border-radius:999px 999px 20px 20px}
+.photo{position:relative;border:var(--b);border-radius:20px;box-shadow:9px 9px 0 var(--ink);background:var(--card);transform:rotate(-1.5deg);transition:transform .4s var(--ease);aspect-ratio:7/8;overflow:hidden;display:grid;place-items:center;font:80px var(--display)}
+.hero-r:hover .photo{transform:rotate(0) scale(1.02)}.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.sticker{position:absolute;right:-6px;bottom:-4px;z-index:3;background:var(--blue);color:var(--on);border:var(--b);padding:8px 12px;border-radius:6px;font:700 11px var(--sans);letter-spacing:.1em;transform:rotate(3deg)}
+.shape{position:absolute;z-index:3;border:var(--b)}
+.s1{width:40px;height:40px;background:var(--yellow);clip-path:polygon(50% 0,100% 100%,0 100%);border:0;right:0;top:4px}.s2{width:30px;height:30px;background:var(--green);left:2px;bottom:10px;rotate:12deg}.s3{width:34px;height:34px;border-radius:50%;background:var(--blue);left:24%;top:-6px;animation-delay:-4s}
+@keyframes drift{from{translate:0 -8px}to{translate:0 8px}}
+/* ── Marquee ── */
+.marquee{background:var(--ink);color:var(--paper);border-block:var(--b);overflow:hidden;padding:14px 0;transform:rotate(-.6deg)}.track{display:flex;width:max-content;animation:mq 34s linear infinite}.marquee:hover .track{animation-play-state:paused}
+.track span{font:22px var(--display);white-space:nowrap;padding-right:28px}.track i{display:inline-block;width:16px;height:16px;border:var(--b);border-radius:4px;margin:0 12px 3px;vertical-align:middle}@keyframes mq{to{transform:translateX(-50%)}}
+/* ── Sections ── */
+.sec{padding:84px 0;position:relative;overflow:hidden}.sec .wrap{position:relative;z-index:1}.sec.tight{padding:56px 0}
+.sec[data-n]::before{content:attr(data-n);position:absolute;right:20px;top:24px;font:clamp(120px,22vw,320px)/1 var(--display);color:transparent;-webkit-text-stroke:2px var(--ink);opacity:.12;pointer-events:none}.alt{background:var(--paper2);border-block:1px solid var(--ink)}
+.idx{display:flex;align-items:center;gap:14px;margin-bottom:18px}.idx b{font:22px var(--display)}.rule{flex:1;border-top:2px dashed var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}.idx.in .rule{transform:none}
+.dots4{display:flex;gap:3px}.dots4 i{width:12px;height:12px;border:var(--b);border-radius:50%}
+.idx .kicker{opacity:0;transition:.5s .6s}.idx.in .kicker{opacity:1}
+.sec h2{font:clamp(34px,4.6vw,60px)/.94 var(--display);letter-spacing:-.04em;margin-bottom:36px;overflow-wrap:anywhere}
+[data-r]{opacity:0;transform:translateY(18px) scale(.985);transition:opacity .52s var(--ease),transform .52s var(--ease);transition-delay:calc(var(--i,0)*60ms)}[data-r].in{opacity:1;transform:none}
+.card{background:var(--card);color:var(--ink);border:var(--b);border-radius:20px;box-shadow:9px 9px 0 var(--ink);padding:26px;position:relative;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.pull{font:italic clamp(28px,3.6vw,48px)/1.08 var(--serif);transform:rotate(-1.2deg);max-width:22ch}
+.sec h2 .mask{padding-bottom:.12em;margin-bottom:-.12em}
+.sec h2.xl{font-size:clamp(48px,9vw,128px)}
+#contact{background:var(--red);border-block:var(--b);color:var(--on)}#contact .rule{border-color:var(--on)}#contact .contact .card{background:var(--card);color:var(--ink)}
+/* ── Skills ── */
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}.sk h3{font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;border-bottom:var(--b);padding-bottom:10px;margin-bottom:14px}.skills{display:flex;flex-wrap:wrap;gap:10px}.skill{border:var(--b);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 16px;font-weight:700;box-shadow:4px 4px 0 var(--ink);transition:.15s}.skill:hover{background:var(--red);color:var(--on);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+/* ── Projects ── */
+.projects{display:grid;gap:28px}.proj{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:start}
+.proj:hover{transform:translate(-3px,-3px);box-shadow:13px 13px 0 var(--ink)}
+.num{font:clamp(40px,6vw,72px)/1 var(--display);color:var(--c);-webkit-text-stroke:2px var(--ink)}
+.proj h3,.cert h3{font:clamp(22px,3vw,34px)/1.05 var(--display);letter-spacing:-.02em;margin-bottom:10px}.proj p{max-width:62ch}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.badge{border:var(--b);border-radius:6px;padding:4px 10px;font:600 12px var(--sans);background:var(--c);color:var(--on)}
+.go{width:56px;height:56px;border-radius:50%;border:var(--b);background:var(--c);color:var(--on);display:grid;place-items:center;font:24px var(--display);text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:.15s}.go:hover,.go:focus-visible{transform:translate(-2px,-2px) rotate(-12deg);box-shadow:6px 6px 0 var(--ink)}.go:active{transform:translate(3px,3px);box-shadow:none}
+.strip{position:absolute;left:0;top:0;bottom:0;width:14px;background:var(--c);border-right:var(--b);border-radius:18px 0 0 18px}.proj{padding-left:44px}
+/* ── Certs ── */
+.certs{border:var(--b);border-radius:14px;background:var(--card);box-shadow:6px 6px 0 var(--ink);overflow:hidden}.cert{display:grid;grid-template-columns:150px 1fr auto;gap:8px 20px;align-items:center;padding:14px 20px;border-bottom:var(--b);transition:background-color .15s}.cert:last-child{border-bottom:0}.cert .kicker{line-height:1.35}.cert:hover{background:var(--paper2)}.cert h3{font-size:18px;margin:0;letter-spacing:0}.cert .meta{font-size:13px;opacity:.7}.cert .row{flex-wrap:nowrap}
+#certifications{background:var(--ink);color:var(--paper);border-block:var(--b)}#certifications .rule{border-color:var(--paper)}#certifications[data-n]::before{-webkit-text-stroke-color:var(--paper);opacity:.18}#certifications .certs{color:var(--ink);box-shadow:6px 6px 0 var(--red)}#certifications .dots4 i{border-color:var(--paper)}
+/* ── Contact ── */
+.contact{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.contact .card{padding:20px;box-shadow:6px 6px 0 var(--ink);background:var(--c);color:var(--on)}.contact a,.contact b{font:22px/1.1 var(--display);text-decoration:none;display:block;margin-top:10px;overflow-wrap:anywhere}.contact a:hover{text-decoration:underline;text-decoration-thickness:4px}.contact .card:hover{transform:translate(-2px,-2px)}
+/* ── Form ── */
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px}.f{display:flex;flex-direction:column;gap:6px}.f.full,form .btn,form [role=status]{grid-column:1/-1}form .btn{justify-self:start}
+label{font:700 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+input,textarea{font:16px var(--sans);background:var(--input);color:var(--ink);border:var(--b);border-radius:8px;padding:12px;min-height:44px;width:100%}textarea{min-height:130px;resize:vertical}
+input:focus,textarea:focus{box-shadow:4px 4px 0 var(--ink)}.err{color:var(--err);font-size:13px;font-weight:600}[aria-invalid=true]{border-color:var(--err)}
+/* ── Footer ── */
+.stripe{display:flex;height:6px}.stripe i{flex:1}.stripe i:nth-child(1){background:var(--red)}.stripe i:nth-child(2){background:var(--blue)}.stripe i:nth-child(3){background:var(--yellow)}.stripe i:nth-child(4){background:var(--green)}
+footer{background:var(--ink);color:var(--paper);padding:64px 0 28px}.mail{display:inline-flex;align-items:center;gap:14px;font:clamp(22px,4.4vw,60px)/1.1 var(--display);letter-spacing:-.03em;text-decoration:none;overflow-wrap:anywhere;background:linear-gradient(var(--red),var(--red)) 0 92%/100% 12px no-repeat;transition:background-size .3s var(--ease),color .3s;margin-bottom:44px}.mail:hover,.mail:focus-visible{background-size:100% 100%;color:var(--on)}.disc{flex:none;width:1.1em;height:1.1em;border:2px solid var(--red);border-radius:50%;display:grid;place-items:center;font-size:.6em;background:var(--red);color:var(--on);transform:rotate(-12deg)}.big{font:clamp(32px,7vw,96px)/.95 var(--display);letter-spacing:-.04em;margin:12px 0 40px}.big em{font:italic 1em var(--serif)}
+.bottom{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;border-top:1px solid var(--paper);padding-top:18px;font-size:14px}.bottom a{padding:12px 0}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;width:56px;height:56px;border-radius:16px;background:var(--red);color:var(--on);border:var(--b);box-shadow:5px 5px 0 var(--ink);display:grid;place-items:center;font:26px var(--display);text-decoration:none;opacity:0;pointer-events:none;transition:opacity .25s,transform .15s}.fab.show{opacity:1;pointer-events:auto}.fab:hover{transform:translate(-2px,-2px)}
+/* ── Modal ── */
+.ov{position:fixed;inset:0;z-index:95;background:rgba(20,18,13,.82);display:none;align-items:center;justify-content:center;padding:18px}.ov.open{display:flex}
+.modal{background:var(--paper);border:var(--b);border-radius:20px;box-shadow:9px 9px 0 var(--red);width:100%;max-width:760px;max-height:92vh;overflow:auto}
+.mh{display:flex;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:var(--b)}.mh h3{font:24px/1.1 var(--display)}
+.mb{padding:22px}.mb img{width:100%;height:auto;display:block;border:var(--b);border-radius:10px;margin-bottom:18px}.mb .none{border:2px dashed var(--ink);border-radius:10px;padding:40px 16px;text-align:center;margin-bottom:18px}
+/* ── Responsive ── */
+@media(max-width:1000px){.hero-grid{grid-template-columns:minmax(0,1fr)}.contact{grid-template-columns:1fr 1fr}.arch{inset:0 0 auto 0;height:50%;border-radius:999px 999px 0 0}}
+@media(max-width:760px){.nav-in{padding:10px 14px}.menu{display:inline-flex}
+ .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:8px;padding:14px;background:var(--paper);border-bottom:2px solid var(--ink);box-shadow:0 6px 0 var(--ink)}.nav.open .links{display:flex}
+ .links a,.links a:hover,.links a.on{border:var(--b);border-radius:10px;padding:14px 16px;background:var(--card);font-size:16px;box-shadow:inset 8px 0 0 var(--tc)}
+ .proj{grid-template-columns:1fr auto;padding-left:40px}.proj .num{display:none}}
+@media(max-width:760px){.cert{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{padding:0 18px}.sec{padding:56px 0}.card{padding:20px}form,.contact{grid-template-columns:1fr}.logo span{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.mask>span,[data-r],.rule,.idx .kicker{opacity:1!important;transform:none!important}#loader{display:none}}
+</style></head>
 <body>
-
-  <div class="cursor-dot"></div>
-  <div id="loader">
-    <div class="loader-text">Farhan Farooqui</div>
-  </div>
-  <div class="progress-bar"></div>
-  <div class="cursor-glow"></div>
-  <div class="portfolio">
-
-    <nav>
-
-      <span class="nav-logo">FF.dev</span>
-      <ul class="nav-links">
-        <li><a href="#about">about</a></li>
-        <li><a href="#projects">projects</a></li>
-        <li><a href="#certifications">certifications</a></li>
-        <li><a href="#contact">contact</a></li>
-        <button id="themeToggle" class="hero-cta">Theme</button>
-      </ul>
-    </nav>
-
-    <div class="hero" id="about">
-      <div class="hero-content">
-        <p class="hero-tag">First Year &middot; B.Tech CSE(AIML)</p>
-        <h1 id="heroName">
-          <span>F</span><span>a</span><span>r</span><span>h</span><span>a</span><span>n</span>
-          <span>&nbsp;</span>
-          <span>F</span><span>a</span><span>r</span><span>o</span><span>o</span><span>q</span><span>u</span><span>i</span>,
-          <br>
-          <em>developer & learner.</em>
-        </h1>
-        <p class="hero-bio">
-          I'm a first-year B.Tech CSE(AIML) student at MITAOE, Pune, driven by a curiosity for how machines learn and how
-          robots interact with the real world. I've built an autonomous pothole-filling robot with Arduino, a fraud
-          detection model for UPI payments, and a deepfake detection system, All while still in my first year. I'm
-          currently deepening my Python and ML skills, with a long-term focus on intelligent systems that solve real
-          problems.
-        </p>
-        <button class="hero-cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
-          Get in touch ↓
-        </button>
-      </div>
-      <img src="your-photo.jpg" alt="Farhan Farooqui" class="hero-image" />
-    </div>
-
-    <section class="reveal">
-      <p class="section-label">Skills (currently learning)</p>
-      <div class="skills-grid">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">HTML &amp; CSS</span>
-        <span class="skill-tag">C</span>
-        <span class="skill-tag">Git &amp; GitHub</span>
-        <span class="skill-tag">VS Code</span>
-        <span class="skill-tag">Team Management</span>
-        <span class="skill-tag">Arduino</span>
-      </div>
-    </section>
-
-    <section id="projects" class="reveal">
-      <p class="section-label">Projects</p>
-      <div class="projects-list">
-
-        <div class="project-item">
-          <div>
-            <p class="project-title">Pothole Filler Robot</p>
-            <p class="project-desc">An Arduino-based autonomous vehicle designed to detect road surface irregularities
-              (potholes), calculate their center-point using a scanning ultrasonic array, and deploy filler material
-              through a servo-controlled funnel system.</p>
-            <div class="project-stack">
-              <span class="stack-badge">C++</span>
-              <span class="stack-badge">Arduino</span>
-              <span class="stack-badge">Arduino IDE</span>
-            </div>
-          </div>
-          <a class="project-arrow" href="https://github.com/FarhanFarooqui122/Pothole-Filler_Robot" target="_blank"
-            rel="noopener">↗</a>
-        </div>
-
-        <div class="project-item">
-          <div>
-            <p class="project-title">Fraud UPI_ID Detection</p>
-            <p class="project-desc">A high-performance Machine Learning solution designed to identify fraudulent Virtual
-              Payment Addresses (VPAs). By analyzing structural patterns in the data to avoid scams.</p>
-            <div class="project-stack">
-              <span class="stack-badge">Python 3.8</span>
-              <span class="stack-badge">XG Boost (ML model)</span>
-              <span class="stack-badge">Pandas &amp; NumPy</span>
-              <span class="stack-badge">Joblib</span>
-              <span class="stack-badge">Faker</span>
-            </div>
-          </div>
-          <a class="project-arrow" href="https://github.com/FarhanFarooqui122/fraud-upi_id-detection-ml" target="_blank"
-            rel="noopener">↗</a>
-        </div>
-
-        <div class="project-item">
-          <div>
-            <p class="project-title">CyberFury</p>
-            <p class="project-desc">CyberFury is an intelligent deepfake detection system designed to identify
-              AI-generated and manipulated images with high accuracy.</p>
-            <div class="project-stack">
-              <span class="stack-badge">Python</span>
-              <span class="stack-badge">PyTorch</span>
-              <span class="stack-badge">Hugging Face Transformers</span>
-              <span class="stack-badge">Streamlit</span>
-              <span class="stack-badge">Pillow (PIL)</span>
-            </div>
-          </div>
-          <a class="project-arrow" href="https://github.com/FarhanFarooqui122/CyberFury" target="_blank"
-            rel="noopener">↗</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── CERTIFICATIONS ── -->
-    <section id="certifications" class="reveal">
-      <p class="section-label">Courses &amp; Certifications</p>
-      <div class="cert-grid">
-
-        <!-- CERT 1 — replace image URL and credly link -->
-        <div class="cert-card">
-          <div class="cert-issuer">IBM</div>
-          <div class="cert-name">Artificial Intelligence Fundamentals</div>
-          <div class="cert-date">Issued: 20 March 2026</div>
-          <div class="cert-actions">
-            <button class="cert-btn primary" onclick="openCert('cert1')">
-              View Certificate
-            </button>
-            <a class="cert-btn" href="https://www.credly.com/earner/earned/badge/088f8d86-57e7-4caf-a7a6-774f05bfcd08"
-              target="_blank" rel="noopener">
-              Credly Badge
-            </a>
-          </div>
-        </div>
-
-        <!-- CERT 2 -->
-        <div class="cert-card">
-          <div class="cert-issuer">Google Developer's Group</div>
-          <div class="cert-name">Techsprint</div>
-          <div class="cert-date">Issued: 2026</div>
-          <div class="cert-actions">
-            <button class="cert-btn primary" onclick="openCert('cert2')">
-              View Certificate
-            </button>
-            <a class="cert-btn" href="https://www.credly.com/earner/earned/badge/088f8d86-57e7-4caf-a7a6-774f05bfcd08"
-              target="_blank" rel="noopener">
-              Credly Badge
-            </a>
-          </div>
-        </div>
-
-        <!-- CERT 3 -->
-        <div class="cert-card">
-          <div class="cert-issuer">CISCO</div>
-          <div class="cert-name">Modern AI</div>
-          <div class="cert-date">Issued: 19 Nov 2025</div>
-          <div class="cert-actions">
-            <button class="cert-btn primary" onclick="openCert('cert3')">
-              View Certificate
-            </button>
-            <a class="cert-btn" href="https://www.credly.com" target="_blank" rel="noopener">
-              Credly Badge
-            </a>
-          </div>
-        </div>
-
-        <!-- CERT 4 — add more by copying this block -->
-        <div class="cert-card">
-          <div class="cert-issuer">Anthropic</div>
-          <div class="cert-name">Claude 101</div>
-          <div class="cert-date">Issued: 26 March 2026 </div>
-          <div class="cert-actions">
-            <button class="cert-btn primary" onclick="openCert('cert4')">
-              View Certificate
-            </button>
-            <a class="cert-btn" href="https://verify.skilljar.com/c/gzzuuvfx6ykv" target="_blank" rel="noopener">
-              Credly Badge
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <hr style="border: none; border-top: 0.5px solid var(--gold-line); margin: 0 0 4rem 0;">
-
-    <section id="contact" class="reveal">
-      <p class="section-label">Contact</p>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <p class="contact-card-label">Email</p>
-          <a class="contact-link" href="mailto:farhanfarooqui312@gmail.com">Email Me</a>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card-label">GitHub</p>
-          <a class="contact-link" href="https://github.com/FarhanFarooqui122" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card-label">LinkedIn</p>
-          <a class="contact-link" href="https://www.linkedin.com/in/farhan-farooqui-622381217" target="_blank"
-            rel="noopener">LinkedIn</a>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card-label">Location</p>
-          <p class="contact-card-value">Pune, India</p>
-        </div>
-      </div>
-    </section>
-
-    <hr style="border: none; border-top: 0.5px solid var(--gold-line); margin: 0 0 4rem 0;">
-
-    <section id="feedback" class="reveal">
-      <p class="section-label">Feedback & Queries</p>
-      <div class="feedback-form">
-        <div class="feedback-row">
-          <div class="feedback-field">
-            <label class="feedback-label">Name</label>
-            <input class="feedback-input" type="text" placeholder="Your name" />
-          </div>
-          <div class="feedback-field">
-            <label class="feedback-label">Phone Number</label>
-            <input class="feedback-input" type="tel" placeholder="+91 00000 00000" />
-          </div>
-          <div class="feedback-field">
-            <label class="feedback-label">Email</label>
-            <input class="feedback-input" type="email" placeholder="you@example.com" />
-          </div>
-        </div>
-        <div class="feedback-field">
-          <label class="feedback-label">Message</label>
-          <textarea class="feedback-input feedback-textarea" placeholder="Your feedback or query..."></textarea>
-        </div>
-        <button class="feedback-btn" onclick="handleFeedback(event)">Send Message &rarr;</button>
-        <p class="feedback-thanks" id="feedbackThanks">✓ Thank you! I'll get back to you soon.</p>
-      </div>
-    </section>
-
-    <footer>
-      <span>&copy; 2026 Farhan Farooqui</span>
-      <span>B.Tech CSE(AIML) &middot; Year 1</span>
-    </footer>
-
-  </div>
-
-  <!-- ── MODAL ── -->
-  <div class="modal-overlay" id="certModal" onclick="handleOverlayClick(event)">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div>
-          <div class="modal-title" id="modalTitle">Certificate</div>
-          <div class="modal-issuer" id="modalIssuer"></div>
-        </div>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-img-wrap" id="modalImgWrap">
-          <!-- image or placeholder loads here -->
-        </div>
-        <div class="modal-footer">
-          <a class="cert-btn primary" id="modalCredlyLink" href="#" target="_blank" rel="noopener">&#127942; View on
-            Credly</a>
-          <a class="cert-btn" id="modalImgDownload" href="#" download>&#8681; Download</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // ── CERTIFICATE DATA ──
-    // Replace image paths with your actual certificate image files or hosted URLs.
-    // Replace credly links with your actual badge URLs.
-    const certs = {
-      cert1: {
-        title: 'Artificial Intelligence Fundamentals',
-        issuer: 'IBM',
-        image: 'Screenshot (93).png',           // e.g. 'certificates/python.jpg' or a hosted URL
-        credly: 'https://www.credly.com/earner/earned/badge/088f8d86-57e7-4caf-a7a6-774f05bfcd08'   // replace with your actual badge link
-      },
-      cert2: {
-        title: 'Techsprint(hackathon)',
-        issuer: 'Google Developers Group',
-        image: 'gdg.jpg',
-
-      },
-      cert3: {
-        title: 'Morden AI',
-        issuer: 'CISCO',
-        image: 'morden.jpg',
-        credly: 'https://www.credly.com/badges/d7ca3f2e-ab81-4c6c-bb30-23cce6ab06d5/linked_in_profile'
-      },
-      cert4: {
-        title: 'Claude 101',
-        issuer: 'Anthropic',
-        image: 'claude.jpg',
-        credly: 'https://verify.skilljar.com/c/gzzuuvfx6ykv'
-      },
-      cert5: {
-        title: 'Your Certificate Name',
-        issuer: 'Your Issuer',
-        image: '',
-        credly: 'https://www.credly.com'
-      }
-
-
-    };
-
-    function openCert(id) {
-      const cert = certs[id];
-      if (!cert) return;
-
-      document.getElementById('modalTitle').textContent = cert.title;
-      document.getElementById('modalIssuer').textContent = cert.issuer;
-      document.getElementById('modalCredlyLink').href = cert.credly;
-      document.getElementById('modalImgDownload').href = cert.image || '#';
-
-      const wrap = document.getElementById('modalImgWrap');
-      if (cert.image) {
-        wrap.innerHTML = '<img src="' + cert.image + '" alt="' + cert.title + '" />';
-      } else {
-        wrap.innerHTML = `
-          <div class="modal-placeholder">
-            </div>
-            <p>Add your certificate image path in the script section</p>
-            <p style="margin-top:4px;font-size:9px;opacity:0.5;">certs.${id}.image = 'your-image-path.jpg'</p>
-          </div>`;
-      }
-
-      document.getElementById('certModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('certModal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function handleOverlayClick(e) {
-      if (e.target === document.getElementById('certModal')) closeModal();
-    }
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // stagger animation
-    document.querySelectorAll("#heroName span").forEach((el, i) => {
-      el.style.animationDelay = `${i * 0.05}s`;
-    });
-
-    const reveals = document.querySelectorAll(".reveal");
-
-    function revealOnScroll() {
-      reveals.forEach((el) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < windowHeight - 100) {
-          el.classList.add("active");
-        }
-      });
-    }
-
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-        } else {
-          entry.target.classList.remove("active");
-        }
-      });
-    }, {
-      threshold: 0.3
-    });
-
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-    const glow = document.querySelector(".cursor-glow");
-
-    document.addEventListener("mousemove", e => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-
-    const hero = document.querySelector(".hero");
-
-    window.addEventListener("scroll", () => {
-      let offset = window.scrollY;
-      hero.style.transform = `translateY(${offset * 0.2}px)`;
-    });
-
-    const progressBar = document.querySelector(".progress-bar");
-
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      progressBar.style.width = scrollPercent + "%";
-    });
-
-    const magneticElements = document.querySelectorAll(".hero-cta, .cert-btn, .skill-tag");
-
-    magneticElements.forEach(el => {
-      el.addEventListener("mousemove", e => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-
-        el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-      });
-
-      el.addEventListener("mouseleave", () => {
-        el.style.transform = "translate(0,0)";
-      });
-    });
-
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-    });
-
-    const nav = document.querySelector("nav");
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-    });
-
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        document.getElementById("loader").classList.add("hidden");
-      }, 1200);
-    });
-
-    const dot = document.querySelector(".cursor-dot");
-
-    document.addEventListener("mousemove", e => {
-      dot.style.left = e.clientX + "px";
-      dot.style.top = e.clientY + "px";
-    });
-
-    const toggle = document.getElementById("themeToggle");
-
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("light");
-    });
-
-    const sections = document.querySelectorAll("section");
-
-    window.addEventListener("scroll", () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-
-        // Check if section is in viewport (with buffer)
-        if (rect.top < window.innerHeight * 0.80 && rect.bottom > window.innerHeight * 0.25) {
-          sec.classList.remove("blur");
-        } else {
-          sec.classList.add("blur");
-        }
-      });
-    });
-
-    function handleFeedback(e) {
-      const inputs = document.querySelectorAll('.feedback-input');
-      let valid = true;
-      inputs.forEach(i => { if (!i.value.trim()) { i.style.borderColor = 'rgba(201,168,76,0.8)'; valid = false; } else { i.style.borderColor = ''; } });
-      if (!valid) return;
-      e.target.style.display = 'none';
-      document.getElementById('feedbackThanks').style.display = 'block';
-      inputs.forEach(i => i.value = '');
-    }
-
-  </script>
-
-</body>
-
-</html>
+<div id="loader" aria-hidden="true">FARHAN FAROOQUI</div>
+<header class="nav" id="nav"><div class="nav-in">
+ <a class="logo" href="#top" aria-label="Home"><i>FF</i><span>FF.dev</span></a>
+ <nav class="links" id="links" aria-label="Primary"><a href="#about">About</a><a href="#projects">Projects</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></nav>
+ <div class="nav-r"><button class="btn sm paper" id="theme" type="button" aria-pressed="false">Theme</button><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="links" aria-label="Menu"><span></span><span></span><span></span></button></div>
+</div><div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><b id="bar"></b></div></header>
+
+<main id="top">
+<section class="hero" id="about" aria-labelledby="h1"><div class="wrap hero-grid">
+ <div>
+  <span class="tag"><i class="dot"></i>First Year · B.Tech CSE (AIML)</span>
+  <h1 id="h1" aria-label="Farhan Farooqui, developer and learner.">
+   <span class="mask"><span class="cv">FARHAN</span></span>
+   <span class="mask"><span class="cv out">FAROOQUI,</span></span>
+   <span class="mask"><span class="ser"><em class="hlk">developer &amp; learner.</em></span></span>
+  </h1>
+  <p class="bio">I’m a first-year B.Tech CSE (AIML) student at MITAOE, Pune, driven by a curiosity for how machines learn and how robots interact with the real world. I’ve built an <span class="hlk y">autonomous pothole-filling robot</span> with Arduino, a fraud detection model for UPI payments, and a deepfake detection system, all while still in my first year. I’m deepening my Python and ML skills, with a long-term focus on intelligent systems that solve real problems.</p>
+  <div class="row"><a class="btn" href="#contact">Get in touch ↓</a><a class="btn ghost" href="#projects">See my work</a></div>
+ </div>
+ <div class="hero-r"><div class="arch" aria-hidden="true"></div><i class="shape s1" aria-hidden="true"></i><i class="shape s2" aria-hidden="true"></i><i class="shape s3" aria-hidden="true"></i>
+  <div class="photo"><img src="your-photo.jpg" alt="Farhan Farooqui" onerror="this.parentNode.textContent='FF'"></div><span class="sticker">PUNE · MITAOE</span></div>
+</div></section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<section class="sec tight" data-n="01" aria-labelledby="t1"><div class="wrap">
+ <div class="idx" data-idx><b>01 —</b><i class="rule"></i><span class="kicker">Skills · currently learning</span></div>
+ <h2 id="t1" data-lines="Toolkit,|still growing."></h2><div class="sk" id="skills"></div>
+</div></section>
+
+<section class="sec alt" id="projects" data-n="02" aria-labelledby="t2"><div class="wrap">
+ <div class="idx" data-idx><b>02 —</b><i class="rule"></i><span class="kicker">Selected work</span></div>
+ <h2 id="t2" class="xl" data-lines="Things I|built."></h2><div class="projects" id="projectList"></div>
+</div></section>
+
+<section class="sec tight" id="certifications" data-n="03" aria-labelledby="t3"><div class="wrap">
+ <div class="idx" data-idx><b>03 —</b><i class="rule"></i><span class="kicker">Courses &amp; certifications</span></div>
+ <h2 id="t3" data-lines="Proof,|on paper."></h2><div class="certs" id="certList"></div>
+</div></section>
+
+<section class="sec" id="contact" data-n="04" aria-labelledby="t4"><div class="wrap">
+ <div class="idx" data-idx><b>04 —</b><i class="rule"></i><span class="kicker">Contact</span></div>
+ <h2 id="t4" class="xl" data-lines="Say hello."></h2>
+ <div class="contact">
+  <div class="card" data-r style="--c:var(--blue)"><span class="kicker">Email</span><a href="mailto:farhanfarooqui312@gmail.com">Email me ↗</a></div>
+  <div class="card" data-r style="--c:var(--yellow)"><span class="kicker">GitHub</span><a href="https://github.com/FarhanFarooqui122" target="_blank" rel="noopener">GitHub ↗</a></div>
+  <div class="card" data-r style="--c:var(--red)"><span class="kicker">LinkedIn</span><a href="https://www.linkedin.com/in/farhan-farooqui-622381217" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  <div class="card" data-r style="--c:var(--green)"><span class="kicker">Location</span><b>Pune, India</b></div>
+ </div>
+</div></section>
+
+<section class="sec" id="feedback" data-n="05" aria-labelledby="t5"><div class="wrap">
+ <div class="idx" data-idx><b>05 —</b><i class="rule"></i><span class="kicker">Feedback &amp; queries</span></div>
+ <h2 id="t5" data-lines="Got a|question?"></h2>
+ <form id="fb" novalidate>
+  <div class="f"><label for="fn">Name</label><input id="fn" autocomplete="name"><div class="err" id="fn-e"></div></div>
+  <div class="f"><label for="fe">Email</label><input id="fe" type="email" autocomplete="email"><div class="err" id="fe-e"></div></div>
+  <div class="f full"><label for="fp">Phone (optional)</label><input id="fp" type="tel" autocomplete="tel" placeholder="+91 00000 00000"></div>
+  <div class="f full"><label for="fm">Message</label><textarea id="fm" placeholder="Your feedback or query…"></textarea><div class="err" id="fm-e"></div></div>
+  <button class="btn" type="submit">Send message →</button><div role="status" aria-live="polite" id="fs"></div>
+ </form>
+</div></section>
+</main>
+
+<div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<footer><div class="wrap"><p class="kicker">Not a form person?</p><p class="big">Let’s build <em>something.</em></p>
+ <a class="mail" href="mailto:farhanfarooqui312@gmail.com">farhanfarooqui312@gmail.com <span class="disc" aria-hidden="true">↗</span></a>
+ <div class="bottom"><span>© 2026 Farhan Farooqui</span><span>B.Tech CSE (AIML) · Year 1</span><a href="#top">Back to top ↑</a></div></div></footer>
+<a class="fab" id="fab" href="#top" aria-label="Back to top">↑</a>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal">
+ <div class="mh"><div><h3 id="mt">Certificate</h3><p class="kicker" id="mi" style="margin-top:6px"></p></div><button class="btn sm paper" id="mx" type="button" aria-label="Close">✕</button></div>
+ <div class="mb"><div id="mimg"></div><div class="row"><a class="btn" id="mlink" target="_blank" rel="noopener">View badge ↗</a><a class="btn ghost" id="mdl" download>Download ⇩</a></div></div>
+</div></div>
+
+<script>
+(function(){'use strict';
+/* ── Content (edit here) ── */
+const SKILLS={'Languages':['Python','C','HTML & CSS'],'Tools & hardware':['Git & GitHub','VS Code','Arduino'],'People':['Team Management']};
+const PROJECTS=[
+ {t:'Pothole Filler Robot',d:'An Arduino-based autonomous vehicle designed to detect road surface irregularities (potholes), calculate their center-point using a scanning ultrasonic array, and deploy filler material through a servo-controlled funnel system.',s:['C++','Arduino','Arduino IDE'],u:'https://github.com/FarhanFarooqui122/Pothole-Filler_Robot'},
+ {t:'Fraud UPI_ID Detection',d:'A high-performance Machine Learning solution designed to identify fraudulent Virtual Payment Addresses (VPAs). By analyzing structural patterns in the data to avoid scams.',s:['Python 3.8','XG Boost (ML model)','Pandas & NumPy','Joblib','Faker'],u:'https://github.com/FarhanFarooqui122/fraud-upi_id-detection-ml'},
+ {t:'CyberFury',d:'CyberFury is an intelligent deepfake detection system designed to identify AI-generated and manipulated images with high accuracy.',s:['Python','PyTorch','Hugging Face Transformers','Streamlit','Pillow (PIL)'],u:'https://github.com/FarhanFarooqui122/CyberFury'}];
+const CERTS=[
+ {t:'Artificial Intelligence Fundamentals',i:'IBM',d:'Issued: 20 March 2026',img:'Screenshot (93).png',u:'https://www.credly.com/earner/earned/badge/088f8d86-57e7-4caf-a7a6-774f05bfcd08',ul:'Credly badge'},
+ {t:'Techsprint (Hackathon)',i:'Google Developers Group',d:'Issued: 2026',img:'gdg.jpg',u:'',ul:''},
+ {t:'Modern AI',i:'Cisco',d:'Issued: 19 Nov 2025',img:'morden.jpg',u:'https://www.credly.com/badges/d7ca3f2e-ab81-4c6c-bb30-23cce6ab06d5/linked_in_profile',ul:'Credly badge'},
+ {t:'Claude 101',i:'Anthropic',d:'Issued: 26 March 2026',img:'claude.jpg',u:'https://verify.skilljar.com/c/gzzuuvfx6ykv',ul:'Verify'}];
+const COL=['blue','red','yellow','green'],cv=i=>i%2?'var(--yellow)':'var(--red)',cs=i=>`var(--${COL[i%4]})`;
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* ── Render ── */
+$('#skills').innerHTML=Object.entries(SKILLS).map(([g,l],i)=>`<div data-r style="--i:${i}"><h3>${esc(g)}</h3><div class="skills">${l.map(x=>`<span class="skill">${esc(x)}</span>`).join('')}</div></div>`).join('');
+$('#projectList').innerHTML=PROJECTS.map((p,i)=>`<article class="card proj" data-r style="--c:${cv(i)}"><i class="strip" aria-hidden="true"></i><span class="num" aria-hidden="true">0${i+1}</span><div><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p><div class="badges">${p.s.map((b,j)=>`<span class="badge" style="--c:${cs(i+j)}">${esc(b)}</span>`).join('')}</div></div><a class="go" style="--c:${cv(i)}" href="${p.u}" target="_blank" rel="noopener" aria-label="Open ${esc(p.t)} on GitHub">↗</a></article>`).join('');
+$('#certList').innerHTML=CERTS.map((c,i)=>`<article class="cert" data-r style="--i:${i}"><span class="kicker">${esc(c.i)}</span><div><h3>${esc(c.t)}</h3><p class="meta">${esc(c.d)}</p></div><div class="row"><button class="btn sm" type="button" data-cert="${i}">View</button>${c.u?`<a class="btn sm ghost" href="${c.u}" target="_blank" rel="noopener">${c.ul} ↗</a>`:''}</div></article>`).join('');
+const tape=['PYTHON','ARDUINO','MACHINE LEARNING','ROBOTICS','DEEPFAKE DETECTION','FIRST YEAR · MITAOE','OPEN TO BUILD'].map((t,i)=>`${t}<i style="background:${cs(i)}"></i>`).join('');
+$('#track').innerHTML=`<span>${tape}</span><span>${tape}</span>`;
+$$('h2[data-lines]').forEach(e=>e.innerHTML=e.dataset.lines.split('|').map((l,i)=>`<span class="mask" style="--l:${i}"><span>${l}</span></span>`).join(''));
+$$('.idx').forEach(e=>{const d=document.createElement('span');d.className='dots4';d.setAttribute('aria-hidden','true');d.innerHTML=COL.map(c=>`<i style="background:var(--${c})"></i>`).join('');e.insertBefore(d,e.children[1])});
+$$('.mask').forEach((m,i)=>{if(m.closest('h1'))m.style.setProperty('--l',i)});
+/* ── Reveal ── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+$$('[data-r],.idx,h2[data-lines],h1').forEach(e=>io.observe(e));
+if(RM)$$('.mask,[data-r],.idx').forEach(e=>e.classList.add('in'));
+/* ── Loader, nav, progress ── */
+addEventListener('load',()=>setTimeout(()=>$('#loader').classList.add('hide'),RM?0:900));
+const nav=$('#nav'),bar=$('#bar'),fab=$('#fab');let tick=false;
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;const y=scrollY,m=document.documentElement.scrollHeight-innerHeight;nav.classList.toggle('stuck',y>80);fab.classList.toggle('show',y>600);bar.style.transform=`scaleX(${1-(m>0?y/m:0)})`})}},{passive:true});
+const tabs=$$('.links a'),spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tabs.forEach(t=>t.classList.toggle('on',t.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+tabs.forEach(t=>{const s=$(t.getAttribute('href'));if(s)spy.observe(s)});
+const mb=$('#menu'),setM=o=>{nav.classList.toggle('open',o);mb.setAttribute('aria-expanded',o)};
+mb.addEventListener('click',()=>setM(!nav.classList.contains('open')));tabs.forEach(t=>t.addEventListener('click',()=>setM(false)));
+/* ── Theme ── */
+const th=$('#theme'),setT=d=>{document.body.classList.toggle('dark',d);th.setAttribute('aria-pressed',d);try{localStorage.setItem('ff-dark',d?'1':'0')}catch(e){}};
+try{if(localStorage.getItem('ff-dark')==='1')setT(true)}catch(e){}
+th.addEventListener('click',()=>setT(!document.body.classList.contains('dark')));
+/* ── Certificate modal ── */
+const ov=$('#ov');let last=null;
+function openC(i){const c=CERTS[i];last=document.activeElement;$('#mt').textContent=c.t;$('#mi').textContent=c.i;
+ $('#mimg').innerHTML=c.img?`<img src="${esc(c.img)}" alt="${esc(c.t)} certificate" onerror="this.outerHTML='<div class=none>Certificate image not found</div>'">`:'<div class="none">Certificate image coming soon</div>';
+ const l=$('#mlink');c.u?(l.href=c.u,l.textContent=(c.ul||'View badge')+' ↗',l.hidden=false):l.hidden=true;
+ const d=$('#mdl');c.img?(d.href=c.img,d.hidden=false):d.hidden=true;ov.classList.add('open');document.body.style.overflow='hidden';$('#mx').focus()}
+function closeC(){ov.classList.remove('open');document.body.style.overflow='';last&&last.focus()}
+$('#certList').addEventListener('click',e=>{const b=e.target.closest('[data-cert]');if(b)openC(+b.dataset.cert)});
+$('#mx').addEventListener('click',closeC);ov.addEventListener('click',e=>{if(e.target===ov)closeC()});
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeC();setM(false)}});
+/* ── Feedback (opens the visitor's email app — no backend needed) ── */
+const fb=$('#fb'),chk=(id,ok,m)=>{const e=$('#'+id),x=$('#'+id+'-e');x.textContent=ok?'':m;ok?(e.removeAttribute('aria-invalid'),e.removeAttribute('aria-describedby')):(e.setAttribute('aria-invalid','true'),e.setAttribute('aria-describedby',id+'-e'));return ok};
+const val=()=>[chk('fn',$('#fn').value.trim(),'Please enter your name.'),chk('fe',/^\S+@\S+\.\S+$/.test($('#fe').value),'Enter a valid email.'),chk('fm',$('#fm').value.trim(),'Write a short message.')];
+['fn','fe','fm'].forEach(id=>$('#'+id).addEventListener('blur',val));
+fb.addEventListener('submit',e=>{e.preventDefault();const r=val();if(r.includes(false)){$('#'+['fn','fe','fm'][r.indexOf(false)]).focus();return}
+ const body=`Name: ${$('#fn').value}\nEmail: ${$('#fe').value}\nPhone: ${$('#fp').value||'-'}\n\n${$('#fm').value}`;
+ location.href=`mailto:farhanfarooqui312@gmail.com?subject=${encodeURIComponent('Portfolio message from '+$('#fn').value)}&body=${encodeURIComponent(body)}`;
+ $('#fs').textContent='✓ Opening your email app with the message ready to send.';});
+})();
+</script></body></html>
