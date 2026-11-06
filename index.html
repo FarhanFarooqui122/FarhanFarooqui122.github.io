@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Farhan Farooqui — Developer & Learner</title>
-<meta name="description" content="Portfolio of Farhan Farooqui, first-year B.Tech CSE (AIML) student at MITAOE, Pune.">
+<meta name="description" content="Portfolio of Farhan Farooqui, second-year B.Tech CSE (AIML) student at MITAOE, Pune.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -122,13 +122,13 @@ footer{background:var(--ink);color:var(--paper);padding:64px 0 28px}.mail{displa
 <main id="top">
 <section class="hero" id="about" aria-labelledby="h1"><div class="wrap hero-grid">
  <div>
-  <span class="tag"><i class="dot"></i>First Year · B.Tech CSE (AIML)</span>
+  <span class="tag"><i class="dot"></i>Second Year · B.Tech CSE (AIML)</span>
   <h1 id="h1" aria-label="Farhan Farooqui, developer and learner.">
    <span class="mask"><span class="cv">FARHAN</span></span>
    <span class="mask"><span class="cv out">FAROOQUI,</span></span>
    <span class="mask"><span class="ser"><em class="hlk">developer &amp; learner.</em></span></span>
   </h1>
-  <p class="bio">I’m a first-year B.Tech CSE (AIML) student at MITAOE, Pune, driven by a curiosity for how machines learn and how robots interact with the real world. I’ve built an <span class="hlk y">autonomous pothole-filling robot</span> with Arduino, a fraud detection model for UPI payments, and a deepfake detection system, all while still in my first year. I’m deepening my Python and ML skills, with a long-term focus on intelligent systems that solve real problems.</p>
+  <p class="bio">I’m a second-year B.Tech CSE (AIML) student at MITAOE, Pune, driven by a curiosity for how machines learn and how robots interact with the real world. I’ve built an <span class="hlk y">autonomous pothole-filling robot</span> with Arduino, a fraud detection model for UPI payments, and a deepfake detection system, most of it during my first year. I’m deepening my Python and ML skills, with a long-term focus on intelligent systems that solve real problems.</p>
   <div class="row"><a class="btn" href="#contact">Get in touch ↓</a><a class="btn ghost" href="#projects">See my work</a></div>
  </div>
  <div class="hero-r"><div class="arch" aria-hidden="true"></div><i class="shape s1" aria-hidden="true"></i><i class="shape s2" aria-hidden="true"></i><i class="shape s3" aria-hidden="true"></i>
@@ -179,7 +179,7 @@ footer{background:var(--ink);color:var(--paper);padding:64px 0 28px}.mail{displa
 <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <footer><div class="wrap"><p class="kicker">Not a form person?</p><p class="big">Let’s build <em>something.</em></p>
  <a class="mail" href="mailto:farhanfarooqui312@gmail.com">farhanfarooqui312@gmail.com <span class="disc" aria-hidden="true">↗</span></a>
- <div class="bottom"><span>© 2026 Farhan Farooqui</span><span>B.Tech CSE (AIML) · Year 1</span><a href="#top">Back to top ↑</a></div></div></footer>
+ <div class="bottom"><span>© 2026 Farhan Farooqui</span><span>B.Tech CSE (AIML) · Year 2</span><a href="#top">Back to top ↑</a></div></div></footer>
 <a class="fab" id="fab" href="#top" aria-label="Back to top">↑</a>
 
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal">
@@ -208,7 +208,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 $('#skills').innerHTML=Object.entries(SKILLS).map(([g,l],i)=>`<div data-r style="--i:${i}"><h3>${esc(g)}</h3><div class="skills">${l.map(x=>`<span class="skill">${esc(x)}</span>`).join('')}</div></div>`).join('');
 $('#projectList').innerHTML=PROJECTS.map((p,i)=>`<article class="card proj" data-r style="--c:${cv(i)}"><i class="strip" aria-hidden="true"></i><span class="num" aria-hidden="true">0${i+1}</span><div><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p><div class="badges">${p.s.map((b,j)=>`<span class="badge" style="--c:${cs(i+j)}">${esc(b)}</span>`).join('')}</div></div><a class="go" style="--c:${cv(i)}" href="${p.u}" target="_blank" rel="noopener" aria-label="Open ${esc(p.t)} on GitHub">↗</a></article>`).join('');
 $('#certList').innerHTML=CERTS.map((c,i)=>`<article class="cert" data-r style="--i:${i}"><span class="kicker">${esc(c.i)}</span><div><h3>${esc(c.t)}</h3><p class="meta">${esc(c.d)}</p></div><div class="row"><button class="btn sm" type="button" data-cert="${i}">View</button>${c.u?`<a class="btn sm ghost" href="${c.u}" target="_blank" rel="noopener">${c.ul} ↗</a>`:''}</div></article>`).join('');
-const tape=['PYTHON','ARDUINO','MACHINE LEARNING','ROBOTICS','DEEPFAKE DETECTION','FIRST YEAR · MITAOE','OPEN TO BUILD'].map((t,i)=>`${t}<i style="background:${cs(i)}"></i>`).join('');
+const tape=['PYTHON','ARDUINO','MACHINE LEARNING','ROBOTICS','DEEPFAKE DETECTION','SECOND YEAR · MITAOE','OPEN TO BUILD'].map((t,i)=>`${t}<i style="background:${cs(i)}"></i>`).join('');
 $('#track').innerHTML=`<span>${tape}</span><span>${tape}</span>`;
 $$('h2[data-lines]').forEach(e=>e.innerHTML=e.dataset.lines.split('|').map((l,i)=>`<span class="mask" style="--l:${i}"><span>${l}</span></span>`).join(''));
 $$('.idx').forEach(e=>{const d=document.createElement('span');d.className='dots4';d.setAttribute('aria-hidden','true');d.innerHTML=COL.map(c=>`<i style="background:var(--${c})"></i>`).join('');e.insertBefore(d,e.children[1])});
